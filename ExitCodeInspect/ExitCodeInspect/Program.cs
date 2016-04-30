@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ExitCodeInspect
 {
@@ -52,12 +48,8 @@ namespace ExitCodeInspect
                 case 1:
                     Environment.ExitCode = exitCode;
                     break;
-                //case 2:
-                    //return exitCode;
             }
             return;
-            
-
         }
     }
 }
