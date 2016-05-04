@@ -14,7 +14,7 @@ rem ・テストプロジェクトの値を変更し、バッチを実行する
 rem #################################################################################################
 
 rem テストプロジェクト名
-set project_name=NUnit2Test
+set project_name=TestUtil.Tests
 
 rem NUnitのインストール先
 rem set nunit_home=C:\Program Files\NUnit 2.6.4

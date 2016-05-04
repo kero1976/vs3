@@ -50,7 +50,7 @@ namespace TestUtil
                     }
                     catch (Exception e)
                     {
-                        string message = string.Format("【DirectoryCopy】フォルダ({0})のコピーで上書きに失敗しました。", sourceDirectory);
+                        string message = string.Format("【DirectoryCopy】フォルダ({0})の削除に失敗しました。", destDirectory);
                         throw new ApplicationException(message, e);
                     }
                 }
@@ -87,7 +87,7 @@ namespace TestUtil
                     }
                     catch (Exception e)
                     {
-                        string message = string.Format("【DirectoryCopy】フォルダ({0})のコピーで上書きに失敗しました。", sourceDirectory);
+                        string message = string.Format("【DirectoryCopy】フォルダ({0})の削除に失敗しました。", sourceDirectory);
                         throw new ApplicationException(message, e);
                     }
                 }

@@ -1,15 +1,18 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace TestUtil
+namespace TestUtil.src.FileCopy
 {
-    public class FileCopyUtilTest
+    class FileCopyUtilTest_File
     {
         #region ファイル名指定なし
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なし1()
         {
             string source = @"テストデータフォルダ\test1.txt";
@@ -17,7 +20,7 @@ namespace TestUtil
             Assert.IsTrue(File.Exists("test1.txt"));
         }
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なし2()
         {
             string source = @"テストデータフォルダ\サブフォルダ\test2.txt";
@@ -25,7 +28,7 @@ namespace TestUtil
             Assert.IsTrue(File.Exists("test2.txt"));
         }
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なし上書き確認1()
         {
             File.Create("test1.txt").Close();
@@ -35,7 +38,7 @@ namespace TestUtil
             Assert.AreEqual("test1", File.ReadAllText("test1.txt"));
         }
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なし上書き確認2()
         {
             File.Create("test2.txt").Close();
@@ -45,7 +48,7 @@ namespace TestUtil
             Assert.AreEqual("test2", File.ReadAllText("test2.txt"));
         }
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なし上書きなし確認1()
         {
             File.Create("test1.txt").Close();
@@ -55,7 +58,7 @@ namespace TestUtil
             Assert.AreEqual("", File.ReadAllText("test1.txt"));
         }
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なし上書きなし確認2()
         {
             File.Create("test2.txt").Close();
@@ -65,7 +68,7 @@ namespace TestUtil
             Assert.AreEqual("", File.ReadAllText("test2.txt"));
         }
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定なしファイル無し()
         {
             // 存在しないファイル
@@ -83,14 +86,14 @@ namespace TestUtil
 
         #endregion
 
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定あり1()
         {
             string source = @"テストデータフォルダ\test1.txt";
             FileCopyUtil.FileCopy(source, "test3.txt");
             Assert.IsTrue(File.Exists("test3.txt"));
         }
-        [Test]
+        [Test, Category("FileCopyUtil")]
         public void コピー先指定あり2()
         {
             string source = @"テストデータフォルダ\サブフォルダ\test2.txt";
@@ -98,21 +101,29 @@ namespace TestUtil
             Assert.IsTrue(File.Exists("test4.txt"));
         }
 
-        [Test]
-        public void フォルダコピー1()
+        #region 前処理・後処理
+        [TestFixtureSetUp]
+        public void 全体前処理()
         {
-            string source = @"テストデータフォルダ";
-            FileCopyUtil.DirectoryCopy(source);
-            Assert.IsTrue(true);
         }
 
-
-        [Test]
-        public void フォルダコピー名前指定()
+        [TestFixtureTearDown]
+        public void 全体後処理()
         {
-            string source = @"テストデータフォルダ";
-            FileCopyUtil.DirectoryCopy(source, "テストデータ２");
-            Assert.IsTrue(true);
         }
+
+        [SetUp]
+        public void 個別前処理()
+        {
+        }
+
+        [TearDown]
+        public void 個別後処理()
+        {
+            // テストデータを削除
+            FileDeleteUtil.DeleteDirectory();
+            FileDeleteUtil.DeleteFile();
+        }
+        #endregion
     }
 }

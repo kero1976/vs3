@@ -60,10 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileCopyUtilTest.cs" />
-    <Compile Include="FileDeleteUtilTest.cs" />
+    <Compile Include="src\FileCopy\FileCopyUtilTest_Directory.cs" />
+    <Compile Include="src\FileCopy\FileCopyUtilTest_File.cs" />
+    <Compile Include="src\FileDelete\FileDeleteUtilTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityUtilTest.cs" />
+    <Compile Include="src\Security\SecurityUtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -73,13 +74,13 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="テストデータフォルダ\サブフォルダ\" />
     <Folder Include="テストデータフォルダ\隠しフォルダ\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\単体テスト用ユーティリティ.dll" />
     <Content Include="lib\単体テスト用ユーティリティ.XML" />
     <Content Include="テストデータフォルダ\test1.txt" />
+    <Content Include="テストデータフォルダ\サブフォルダ\test2.txt" />
     <Content Include="テストデータフォルダ\テストファイル.txt" />
   </ItemGroup>
   <ItemGroup>
