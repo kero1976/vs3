@@ -21,7 +21,7 @@ namespace TestUtil
                 SecurityUtil.Read(new FileInfo("test1.txt"), AccessControlType.Allow);
             });
             // ファイルが存在しない場合にApplicationExceptionが発ししたらOK
-            StringAssert.StartsWith("【Read(File)】ファイル", ex.Message);
+            StringAssert.StartsWith("【SecurityRead(File)】ファイル", ex.Message);
             StringAssert.Contains("test1.txt", ex.Message);
             StringAssert.EndsWith("が存在しません。", ex.Message);
         }
@@ -38,7 +38,7 @@ namespace TestUtil
             {
                 SecurityUtil.Read(new FileInfo("test.txt"), AccessControlType.Allow);
             });
-            StringAssert.StartsWith("【Read(File)】", ex.Message);
+            StringAssert.StartsWith("【SecurityRead(File)】", ex.Message);
             StringAssert.Contains("test.txt", ex.Message);
             StringAssert.EndsWith("の設定で例外が発生しました。", ex.Message);
         }
@@ -85,7 +85,7 @@ namespace TestUtil
                 SecurityUtil.Read(new DirectoryInfo("テストデータフォルダ"), AccessControlType.Allow);
             });
             // フォルダが存在しない場合にApplicationExceptionが発生したらOK
-            StringAssert.StartsWith("フォルダ", ex.Message);
+            StringAssert.StartsWith("【SecurityRead(Dir)】フォルダ", ex.Message);
             StringAssert.Contains("テストデータフォルダ", ex.Message);
             StringAssert.EndsWith("が存在しません。", ex.Message);
         }
@@ -102,7 +102,7 @@ namespace TestUtil
             {
                 SecurityUtil.Read(new DirectoryInfo("test"), AccessControlType.Allow);
             });
-            StringAssert.StartsWith("【Read(Dir)】", ex.Message);
+            StringAssert.StartsWith("【SecurityRead(Dir)】", ex.Message);
             StringAssert.Contains("test", ex.Message);
             StringAssert.EndsWith("の設定で例外が発生しました。", ex.Message);
         }

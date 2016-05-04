@@ -136,8 +136,16 @@ namespace TestUtil
             {
                 if (overrideFlg)
                 {
-                    // ファイルが存在していて上書きモードの場合は既存ファイルを削除
-                    File.Delete(destFile);
+                    try
+                    {
+                        // ファイルが存在していて上書きモードの場合は既存ファイルを削除
+                        File.Delete(destFile);
+                    }catch(Exception e)
+                    {
+                        string message = string.Format("【FileCopy】ファイル[{0}]の削除に失敗しました。", destFile);
+                        throw new ApplicationException(message, e);
+                    }
+
                 }
                 else
                 {
