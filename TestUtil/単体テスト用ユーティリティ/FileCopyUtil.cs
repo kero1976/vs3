@@ -37,7 +37,7 @@ namespace TestUtil
             var dir = new DirectoryInfo(Path.Combine(BASE_DIR, sourceDirectory));
             if (!dir.Exists)
             {
-                string message = string.Format("コピー対象のフォルダ({0})が存在しません。", sourceDirectory);
+                string message = string.Format("【DirectoryCopy】コピー対象のフォルダ({0})が存在しません。", sourceDirectory);
                 throw new ApplicationException(message);
             }
             if (Directory.Exists(destDirectory))
@@ -50,7 +50,7 @@ namespace TestUtil
                     }
                     catch (Exception e)
                     {
-                        string message = string.Format("フォルダ({0})のコピーで上書きに失敗しました。", sourceDirectory);
+                        string message = string.Format("【DirectoryCopy】フォルダ({0})のコピーで上書きに失敗しました。", sourceDirectory);
                         throw new ApplicationException(message, e);
                     }
                 }
@@ -74,7 +74,7 @@ namespace TestUtil
             var dir = new DirectoryInfo(Path.Combine(BASE_DIR, sourceDirectory));
             if (!dir.Exists)
             {
-                string message = string.Format("コピー対象のフォルダ({0})が存在しません。", sourceDirectory);
+                string message = string.Format("【DirectoryCopy】コピー対象のフォルダ({0})が存在しません。", sourceDirectory);
                 throw new ApplicationException(message);
             }
             if (Directory.Exists(dir.Name))
@@ -87,7 +87,7 @@ namespace TestUtil
                     }
                     catch (Exception e)
                     {
-                        string message = string.Format("フォルダ({0})のコピーで上書きに失敗しました。", sourceDirectory);
+                        string message = string.Format("【DirectoryCopy】フォルダ({0})のコピーで上書きに失敗しました。", sourceDirectory);
                         throw new ApplicationException(message, e);
                     }
                 }
@@ -128,7 +128,7 @@ namespace TestUtil
             // コピー元ファイルが存在しない場合はエラー
             if (!file.Exists)
             {
-                string message = string.Format("ファイル[{0}]が存在しません。", sourceFile);
+                string message = string.Format("【FileCopy】ファイル[{0}]が存在しません。", sourceFile);
                 throw new ApplicationException(message);
             }
             // カレントディレクトリに既にファイルが存在するか？

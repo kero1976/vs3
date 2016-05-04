@@ -35,7 +35,7 @@ namespace TestUtil
                         }
                         catch (Exception e)
                         {
-                            string message = string.Format("{0}が削除できませんでした。", f.Name);
+                            string message = string.Format("【DeleteFile】{0}が削除できませんでした。", f.Name);
                             throw new ApplicationException(message, e);
                         }
                         break;
@@ -46,13 +46,23 @@ namespace TestUtil
         /// <summary>
         /// 実行時フォルダ内のディレクトリを削除する
         /// </summary>
+        /// 削除できないものについては
         public static void DeleteDirectory()
         {
             var dir = new DirectoryInfo(".");
-            foreach(var d in dir.EnumerateDirectories())
+
+            foreach (var d in dir.EnumerateDirectories())
             {
-                d.Delete(true);
+                try
+                {
+                    d.Delete(true);
+                }
+                catch (Exception e)
+                {
+                    string message = string.Format("【DeleteDirectory】{0}の削除に失敗。{1}", d.Name, e.Message);
+                    Console.WriteLine(message);
+                }
             }
-        } 
+        }
     }
 }

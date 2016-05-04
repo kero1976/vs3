@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestUtil</RootNamespace>
-    <AssemblyName>TestUtil</AssemblyName>
+    <AssemblyName>TestUtil.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -58,16 +58,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="単体テスト用ユーティリティ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\単体テスト用ユーティリティ.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1Test.cs" />
     <Compile Include="FileCopyUtilTest.cs" />
     <Compile Include="FileDeleteUtilTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityUtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -85,6 +81,12 @@
     <Content Include="lib\単体テスト用ユーティリティ.XML" />
     <Content Include="テストデータフォルダ\test1.txt" />
     <Content Include="テストデータフォルダ\テストファイル.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\単体テスト用ユーティリティ\TestUtil.csproj">
+      <Project>{8364207b-c610-44d7-9090-3d167098747d}</Project>
+      <Name>TestUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,8 +15,15 @@ namespace TestUtil
     /// Console.Write(time.Stop());
     public class TimerUtil
     {
+
+        /// <summary>
+        /// ストップウォッチ
+        /// </summary>
         private Stopwatch sw;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public TimerUtil()
         {
             sw = new Stopwatch();
@@ -30,7 +37,7 @@ namespace TestUtil
         public string Stop()
         {
             sw.Stop();
-            return String.Format("経過時間(秒):{0}", sw.ElapsedMilliseconds / 1000);
+            return string.Format("経過時間(秒):{0}", sw.ElapsedMilliseconds / 1000);
         }
     }
 }

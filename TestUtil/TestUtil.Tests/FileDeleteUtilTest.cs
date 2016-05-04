@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
 using System.IO;
-using 単体テスト用ユーティリティ;
 
 namespace TestUtil
 {
@@ -19,7 +18,7 @@ namespace TestUtil
         [Test]
         public void ファイル削除できない()
         {
-            File.Create("test1.txt");
+            var fs = File.Create("test1.txt");
 
             var ex = Assert.Throws<ApplicationException>(() =>
             {
@@ -28,15 +27,16 @@ namespace TestUtil
 
             // ロックしているので削除できないため存在する
             Assert.IsTrue(File.Exists("test1.txt"));
-            Assert.That(ex.Message, Is.EqualTo("test1.txtが削除できませんでした。"));
+            Assert.That(ex.Message, Is.EqualTo("【DeleteFile】test1.txtが削除できませんでした。"));
+            fs.Close();
         }
 
         [Test]
         public void ディレクトリ削除()
         {
-            Directory.CreateDirectory("test");
+            Directory.CreateDirectory("テスト");
             FileDeleteUtil.DeleteDirectory();
-            Assert.IsFalse(Directory.Exists("test"));
+            Assert.IsFalse(Directory.Exists("テスト"));
         }
     }
 }

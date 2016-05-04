@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
 using System.IO;
-using 単体テスト用ユーティリティ;
 
 
 namespace TestUtil
@@ -79,7 +78,7 @@ namespace TestUtil
 
             // 存在しないファイルをコピーしているので存在しないはず
             Assert.IsFalse(File.Exists(source));
-            Assert.That(ex.Message, Is.EqualTo(@"ファイル[テストデータフォルダ\test3.txt]が存在しません。"));
+            Assert.That(ex.Message, Is.EqualTo(@"【FileCopy】ファイル[テストデータフォルダ\test3.txt]が存在しません。"));
         }
 
         #endregion
