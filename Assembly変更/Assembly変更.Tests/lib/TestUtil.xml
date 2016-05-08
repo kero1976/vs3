@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestUtil</name>
+    </assembly>
+    <members>
+        <member name="T:TestUtil.FileCopyUtil">
+            <summary>
+            ファイルコピー用ユーティリティクラス
+            </summary>
+            プロジェクト内のテスト用ファイル、フォルダ類を実行時フォルダにコピーする。
+            実行時フォルダは「bin\Debug」or「bin\Release」を想定している。
+        </member>
+        <member name="F:TestUtil.FileCopyUtil.base_dir">
+            <summary>
+            実行時フォルダからプロジェクトフォルダへのパスを指定
+            </summary>
+        </member>
+        <member name="P:TestUtil.FileCopyUtil.BASE_DIR">
+            <summary>
+            実行時フォルダからプロジェクトフォルダへのパスを指定
+            </summary>
+        </member>
+        <member name="M:TestUtil.FileCopyUtil.DirectoryCopy(System.String,System.String,System.Boolean)">
+            <summary>
+            コピー先ディレクトリをカレント(実行時)ディレクトリに別名でコピーする。
+            </summary>
+            上書きフラグがtrueの場合(指定無しはtrue)の場合は既存ディレクトリがあれば削除する。
+            上書きフラグがfalseの場合は、既存ディレクトリがあれば何もしない。
+            <param name="sourceDirectory">コピー元ディレクトリ</param>
+            <param name="destDirectory">コピー先ディレクトリ</param>
+            <param name="overrideFlg">上書きフラグ(初期値:true)</param>
+        </member>
+        <member name="M:TestUtil.FileCopyUtil.DirectoryCopy(System.String,System.Boolean)">
+            <summary>
+            コピー先ディレクトリをカレント(実行時)ディレクトリに同名でコピーする。
+            </summary>
+            上書きフラグがtrueの場合(指定無しはtrue)の場合は既存ディレクトリがあれば削除する。
+            上書きフラグがfalseの場合は、既存ディレクトリがあれば何もしない。
+            <param name="sourceDirectory">コピー元ディレクトリ</param>
+            <param name="overrideFlg">上書きフラグ(初期値:true)</param>
+        </member>
+        <member name="M:TestUtil.FileCopyUtil.FileCopy(System.String,System.Boolean)">
+            <summary>
+            コピー元ファイルをカレント(実行時)ディレクトリに同名でコピーする。
+            </summary>
+            上書きフラグがtrueの場合(指定無しはtrue)の場合は既存ファイルがあれば削除する。
+            上書きフラグがfalseの場合は、既存ファイルがあれば何もしない。
+            <param name="sourceFile">コピー元ファイル</param>
+            <param name="overrideFlg">上書きフラグ(初期値:true)</param>
+        </member>
+        <member name="M:TestUtil.FileCopyUtil.FileCopy(System.String,System.String,System.Boolean)">
+            <summary>
+            コピー元ファイルをカレント(実行時)ディレクトリに指定名称でコピーする。
+            </summary>
+            上書きフラグがtrueの場合(指定無しはtrue)の場合は既存ファイルがあれば削除する。
+            上書きフラグがfalseの場合は、既存ファイルがあれば何もしない。
+            <param name="sourceFile">コピー元ファイル</param>
+            <param name="destFile">コピー先ファイル</param>
+            <param name="overrideFlg">上書きフラグ(初期値:true)</param>
+        </member>
+        <member name="M:TestUtil.FileCopyUtil.CopyDirectory(System.String,System.String)">
+            <summary>
+            ディレクトリをコピーする
+            </summary>
+            <param name="sourceDirName">コピーするディレクトリ</param>
+            <param name="destDirName">コピー先のディレクトリ</param>
+        </member>
+        <member name="T:TestUtil.FileDeleteUtil">
+            <summary>
+            ファイル削除用ユーティリティクラス
+            </summary>
+            実行時フォルダにある特定のファイル、フォルダを削除する。
+        </member>
+        <member name="M:TestUtil.FileDeleteUtil.DeleteFile">
+            <summary>
+            実行時フォルダ内のdll,pdb,exe以外のファイルを削除する。
+            </summary>
+        </member>
+        <member name="M:TestUtil.FileDeleteUtil.DeleteDirectory">
+            <summary>
+            実行時フォルダ内のディレクトリを削除する
+            </summary>
+            削除できないものについては
+        </member>
+        <member name="T:TestUtil.SecurityUtil">
+            <summary>
+            ファイル・フォルダアクセス権限用ユーティリティクラス
+            </summary>
+        </member>
+        <member name="F:TestUtil.SecurityUtil.user">
+            <summary>
+            アクセス権を設定するユーザー。
+            </summary>
+            実行時ユーザーを指定
+        </member>
+        <member name="M:TestUtil.SecurityUtil.Read(System.IO.FileInfo,System.Security.AccessControl.AccessControlType)">
+            <summary>
+            Read権限の設定
+            </summary>
+            <param name="file">指定するファイル</param>
+            <param name="type">許可/拒否</param>
+        </member>
+        <member name="M:TestUtil.SecurityUtil.Read(System.IO.DirectoryInfo,System.Security.AccessControl.AccessControlType)">
+            <summary>
+            Read権限の設定
+            </summary>
+            <param name="dir">指定するフォルダ</param>
+            <param name="type">許可/拒否</param>
+        </member>
+        <member name="M:TestUtil.SecurityUtil.Delete(System.IO.FileInfo,System.Security.AccessControl.AccessControlType)">
+            <summary>
+            Delete権限の設定
+            </summary>
+            ファイルに対して「削除禁止」をしても、フォルダに"サブフォルダーとファイルの削除"が許可されている場合は
+            削除できてしまう。そのため、フォルダに対して、"サブフォルダーとファイルの削除"の権限を外す必要がある。
+            <param name="file">指定するファイル</param>
+            <param name="type">許可/拒否</param>
+        </member>
+        <member name="T:TestUtil.TimerUtil">
+            <summary>
+            時間計測用ユーティリティ
+            </summary>
+            使い方
+            TimerUtils time = new TimerUtils();
+            Console.Write(time.Stop());
+        </member>
+        <member name="F:TestUtil.TimerUtil.sw">
+            <summary>
+            ストップウォッチ
+            </summary>
+        </member>
+        <member name="M:TestUtil.TimerUtil.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:TestUtil.TimerUtil.Stop">
+            <summary>
+            インスタンス作成時からの経過時間(秒)を取得する
+            </summary>
+            <returns>経過時間(秒)</returns>
+        </member>
+    </members>
+</doc>
