@@ -107,7 +107,6 @@ namespace TestUtil
             dir.SetAccessControl(security);
         }
 
-
         /// <summary>
         /// Delete権限の設定
         /// </summary>

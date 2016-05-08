@@ -14,7 +14,7 @@ namespace TestUtil
     public static class FileDeleteUtil
     {
         /// <summary>
-        /// 実行時フォルダ内のdll,pdb以外のファイルを削除する。
+        /// 実行時フォルダ内のdll,pdb,exe以外のファイルを削除する。
         /// </summary>
         public static void DeleteFile()
         {
@@ -27,6 +27,8 @@ namespace TestUtil
                     case ".DLL":
                         break;
                     case ".PDB":
+                        break;
+                    case ".EXE":
                         break;
                     default:
                         try
