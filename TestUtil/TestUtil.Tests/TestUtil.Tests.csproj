@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\FileCopy\FileCopyUtilTest_DirFile.cs" />
     <Compile Include="src\FileCopy\FileCopyUtilTest_Directory.cs" />
     <Compile Include="src\FileCopy\FileCopyUtilTest_File.cs" />
     <Compile Include="src\FileDelete\FileDeleteUtilTest.cs" />

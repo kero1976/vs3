@@ -25,7 +25,33 @@ namespace TestUtil
         }
 
         /// <summary>
-        /// コピー先ディレクトリをカレント(実行時)ディレクトリに別名でコピーする。
+        /// コピー元ディレクトリ以下のファイル・フォルダをカレント(実行時)ディレクトリにコピーする。
+        /// </summary>
+        /// 指定したフォルダ名は作成しない。
+        /// <param name="sourceDirectory">コピー元ディレクトリ</param>
+        /// <param name="overrideFlg">上書きフラグ(初期値:true)</param>
+        public static void DirFileCopy(string sourceDirectory, bool overrideFlg = true)
+        {
+            var dir = new DirectoryInfo(Path.Combine(BASE_DIR, sourceDirectory));
+            if (!dir.Exists)
+            {
+                string message = string.Format("【DirFileCopy】コピー対象のフォルダ({0})が存在しません。", sourceDirectory);
+                throw new ApplicationException(message);
+            }
+
+            foreach(var f in dir.GetFiles())
+            {
+                FileCopy(f.FullName, overrideFlg);
+            }
+
+            foreach(var d in dir.GetDirectories())
+            {
+                DirectoryCopy(d.FullName, overrideFlg);
+            }
+        }
+
+        /// <summary>
+        /// コピー元ディレクトリをカレント(実行時)ディレクトリに別名でコピーする。
         /// </summary>
         /// 上書きフラグがtrueの場合(指定無しはtrue)の場合は既存ディレクトリがあれば削除する。
         /// 上書きフラグがfalseの場合は、既存ディレクトリがあれば何もしない。
@@ -63,7 +89,7 @@ namespace TestUtil
         }
 
         /// <summary>
-        /// コピー先ディレクトリをカレント(実行時)ディレクトリに同名でコピーする。
+        /// コピー元ディレクトリをカレント(実行時)ディレクトリに同名でコピーする。
         /// </summary>
         /// 上書きフラグがtrueの場合(指定無しはtrue)の場合は既存ディレクトリがあれば削除する。
         /// 上書きフラグがfalseの場合は、既存ディレクトリがあれば何もしない。
