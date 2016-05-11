@@ -39,12 +39,12 @@ namespace TestUtil
                 throw new ApplicationException(message);
             }
 
-            foreach(var f in dir.GetFiles())
+            foreach (var f in dir.GetFiles())
             {
                 FileCopy(f.FullName, overrideFlg);
             }
 
-            foreach(var d in dir.GetDirectories())
+            foreach (var d in dir.GetDirectories())
             {
                 DirectoryCopy(d.FullName, overrideFlg);
             }
@@ -196,7 +196,7 @@ namespace TestUtil
             var srcDir = new DirectoryInfo(sourceDirName);
             var destDir = new DirectoryInfo(destDirName);
 
-            // コピー先のディレクトリがないときは作る
+            // コピー先のディレクトリがないときは作る。ディレクトリを事前に削除しているので必ず通る。
             if (!destDir.Exists)
             {
                 destDir.Create();

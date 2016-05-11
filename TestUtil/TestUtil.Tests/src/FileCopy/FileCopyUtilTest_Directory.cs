@@ -84,6 +84,18 @@ namespace TestUtil
         #region 別名コピー
 
         [Test, Category("FileCopyUtil")]
+        public void 別名コピー()
+        {
+            string source = @"テストデータフォルダ\サブフォルダ";
+
+            // コピー
+            FileCopyUtil.DirectoryCopy(source, "新しい名前");
+
+            // 指定した名前で作成されているはず
+            Assert.True(Directory.Exists("新しい名前"));
+        }
+
+        [Test, Category("FileCopyUtil")]
         public void 別名コピー_フォルダなしエラー()
         {
             // 存在しないフォルダを指定
@@ -152,10 +164,6 @@ namespace TestUtil
         }
 
         #endregion
-
-
-
-
 
 
         #region 前処理・後処理
