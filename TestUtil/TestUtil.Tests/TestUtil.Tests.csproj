@@ -84,6 +84,12 @@
     <Content Include="テストデータフォルダ\サブフォルダ\test2.txt" />
     <Content Include="テストデータフォルダ\テストファイル.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestUtil\TestUtil.csproj">
+      <Project>{8364207b-c610-44d7-9090-3d167098747d}</Project>
+      <Name>TestUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

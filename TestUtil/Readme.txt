@@ -112,3 +112,7 @@ https://msdn.microsoft.com/library/system.runtime.compilerservices.internalsvisi
 
 ■Fake
 https://msdn.microsoft.com/ja-jp/library/hh549175.aspx
+
+■画面がある場合のテスト
+メソッドに[Test, STAThread]を付ける
+
