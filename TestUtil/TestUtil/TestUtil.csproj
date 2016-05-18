@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugUtil.cs" />
     <Compile Include="FileCopyUtil.cs" />
     <Compile Include="FileDeleteUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
