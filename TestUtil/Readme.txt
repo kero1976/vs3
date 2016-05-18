@@ -116,3 +116,6 @@ https://msdn.microsoft.com/ja-jp/library/hh549175.aspx
 ■画面がある場合のテスト
 メソッドに[Test, STAThread]を付ける
 
+■MaxTime属性とTimeout属性
+どちらの属性も、実行に指定した時間以上掛かるとテストは失敗となります。
+その時点でTimeout属性では強制終了させられますが、MaxTime属性では完了するまで実行が続きます。
